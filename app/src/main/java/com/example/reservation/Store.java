@@ -2,8 +2,11 @@ package com.example.reservation;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
 @Entity(tableName = "Store")
 
 public class Store {
@@ -116,7 +119,7 @@ public class Store {
         }
     }
 
-    private void cancelCustomerRequest(Request approvedRequest) {
+    private void cancelCustomerRequest(@NonNull Request approvedRequest) {
         Customer customer = findCustomerById(approvedRequest.getCustomerId());
         List<Request> requests = customer.getReservations();
         for (Request request : requests) {
